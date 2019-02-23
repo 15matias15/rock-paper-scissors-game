@@ -1,20 +1,76 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="container">
+  <div class="row">
+    <div class="col-sm col-xs">
+      <h1>Rock, Paper & Scissors Game</h1>
+    </div>
+  </div>
+  <br>
+  <h2 style="text-align: center">Please select an option</h2>
+  <div class="row">
+    <div class="col-sm-9 col-xs">
+      <div class="d-md-inline-flex">
+        <div class="card card-player" *ngFor="let option of gameOptions" (click)="onSelect(option.name)"
+          [ngClass]="{'card-selected': selected === option.name ? true:null}">
+          <i class="far fa-hand-{{option.name}}"></i>
+          <div class="card-block">
+            <h5 class="card-title">{{option.name | uppercase}}</h5>
+            <p class="card-text">Strong against {{option.strength}}</p>
+            <p class="card-text">Weak against {{option.weakness}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 col-xs" *ngIf="machineOption">
+      <div class="d-md-inline-flex">
+        <div class="card card-machine">
+          <i class="far fa-hand-{{machineOption}}"></i>
+          <div class="card-block">
+            <h5 class="card-title">{{machineOption | uppercase}}</h5>
+            <p class="card-text">OPPONENT</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-sm col-xs btn-group" role="group">
+      <button type="button" class="btn w-50 btn-primary" [disabled]="!played" (click)="onPlay()">PLAY</button>
+      <button type="submit" class="btn w-50 btn-danger" (click)="onReset()">RESET</button>
+    </div>
+  </div>
+  <hr>
+  <div *ngIf="prevResult.length >0">
+    <div class="row">
+      <div class="col-sm col-xs">
+        <h2>You {{result | titlecase}} <i
+            [ngClass]="{'win':'far fa-smile','lose':'far fa-frown','tied':'far fa-meh'}[result]"></i>
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-xs-3"><strong>You: {{win}}</strong></div>
+      <div class="col-sm-6 col-xs-3"><strong>Machine: {{lose}}</strong></div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-12 col-xs table-responsive">
+        <h2>Your Results</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Option</th>
+              <th scope="col">Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let history of prevResult">
+              <td>{{history.selected}}</td>
+              <td>{{history.result}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-

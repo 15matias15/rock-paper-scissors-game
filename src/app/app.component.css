@@ -1,0 +1,53 @@
+.fa-hand-scissors,
+.fa-hand-rock,
+.fa-hand-paper{
+    font-size: 7em;
+}
+
+.card {
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: rgb(162, 225, 247);
+}
+
+.card-machine {
+    background-color: coral !important;
+}
+
+.card-player{
+    cursor: pointer;   
+}
+
+.card-player:hover {
+    border: 2px solid blue;
+}
+
+.card-selected {
+    border: 2px solid black;
+}
+
+.table {
+    border: 1px solid gray;
+    border-radius: 10px;
+    align-content: center
+}
+
+@media(max-width: 780px) {
+    .fa-hand-scissors,
+    .fa-hand-rock,
+    .fa-hand-paper{
+        font-size: 2em;
+    }
+
+    h5 {
+        font-size: 0.8em;
+    }
+
+    p {
+        display: none;
+        visibility: hidden;
+    }
+}
